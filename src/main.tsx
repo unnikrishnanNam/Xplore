@@ -8,7 +8,7 @@ import { AppSidebar } from "./components/custom/app-sidebar.tsx";
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <SidebarProvider className="h-full w-full flex">
-      <AppSidebar />
+        <AppSidebar />
       <App />
     </SidebarProvider>
   </React.StrictMode>

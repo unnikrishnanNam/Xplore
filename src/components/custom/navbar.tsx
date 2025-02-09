@@ -8,7 +8,7 @@ const Navbar = () => {
       {/* //* Misc  */}
       <div className="flex gap-2 items-center justify-start">
         <SidebarTrigger className="no-drag border p-4 cursor-pointer" />
-        <ModeToggle/>
+        <ModeToggle />
       </div>
       {/* //* Title  */}
       <div className="bg-secondary w-full p-4 rounded-md"></div>

@@ -14,6 +14,7 @@ import { cn } from "@/lib/utils";
 import {
   Clapperboard,
   FolderDown,
+  Folders,
   Image,
   Monitor,
   RotateCcw,
@@ -24,6 +25,11 @@ import { IoCloud } from "react-icons/io5";
 
 export function AppSidebar() {
   const QuickAccessItems = [
+    {
+      title: "All Files",
+      url: "/",
+      icon: () => <Folders size={16} />,
+    },
     {
       title: "Recents",
       url: "/",

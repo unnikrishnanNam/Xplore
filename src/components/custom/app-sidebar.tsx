@@ -18,6 +18,9 @@ import {
   Monitor,
   RotateCcw,
 } from "lucide-react";
+import { FaDropbox, FaGoogleDrive } from "react-icons/fa6";
+import { ImOnedrive } from "react-icons/im";
+import { IoCloud } from "react-icons/io5";
 
 export function AppSidebar() {
   const QuickAccessItems = [
@@ -65,6 +68,26 @@ export function AppSidebar() {
       color: "bg-blue-500",
     },
   ];
+
+  const CloudStorageItem = [
+    {
+      title: "Google Drive",
+      icon: () => <FaGoogleDrive size={16} />,
+    },
+    {
+      title: "Dropbox",
+      icon: () => <FaDropbox size={16} />,
+    },
+    {
+      title: "OneDrive",
+      icon: () => <ImOnedrive size={16} />,
+    },
+    {
+      title: "iCloud",
+      icon: () => <IoCloud size={16} />,
+    },
+  ];
+
   return (
     <Sidebar className="bg-transparent rounded-md overflow-hidden">
       <SidebarHeader className="drag">
@@ -101,6 +124,23 @@ export function AppSidebar() {
                   <SidebarMenuButton asChild>
                     <div className="flex items-center gap-2">
                       <div className={cn("p-1 rounded-full", item.color)}></div>
+                      <span>{item.title}</span>
+                    </div>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>{" "}
+        <SidebarGroup>
+          <SidebarGroupLabel>Cloud Storage</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {CloudStorageItem.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <div className="flex items-center gap-2">
+                      <item.icon />
                       <span>{item.title}</span>
                     </div>
                   </SidebarMenuButton>

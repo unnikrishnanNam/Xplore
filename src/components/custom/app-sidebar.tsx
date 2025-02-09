@@ -10,24 +10,59 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Home, Info, Mail } from "lucide-react";
+import { cn } from "@/lib/utils";
+import {
+  Clapperboard,
+  FolderDown,
+  Image,
+  Monitor,
+  RotateCcw,
+} from "lucide-react";
 
 export function AppSidebar() {
-  const items = [
+  const QuickAccessItems = [
     {
-      title: "Home",
+      title: "Recents",
       url: "/",
-      icon: () => <Home size={16} />,
+      icon: () => <RotateCcw size={16} />,
     },
     {
-      title: "About",
-      url: "/about",
-      icon: () => <Info size={16} />,
+      title: "Desktop",
+      url: "/desktop",
+      icon: () => <Monitor size={16} />,
     },
     {
-      title: "Contact",
-      url: "/contact",
-      icon: () => <Mail size={16} />,
+      title: "Downloads",
+      url: "/downloads",
+      icon: () => <FolderDown size={16} />,
+    },
+    {
+      title: "Pictures",
+      url: "/pictures",
+      icon: () => <Image size={16} />,
+    },
+    {
+      title: "Videos",
+      url: "/videos",
+      icon: () => <Clapperboard size={16} />,
+    },
+  ];
+  const PinnedFoldersItem = [
+    {
+      title: "Red",
+      color: "bg-red-500",
+    },
+    {
+      title: "Yellow",
+      color: "bg-yellow-500",
+    },
+    {
+      title: "Green",
+      color: "bg-green-500",
+    },
+    {
+      title: "Blue",
+      color: "bg-blue-500",
     },
   ];
   return (
@@ -41,16 +76,33 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
+          <SidebarGroupLabel>Quick Access</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
-              {items.map((item) => (
+              {QuickAccessItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
                     <a href={item.url}>
                       <item.icon />
                       <span>{item.title}</span>
                     </a>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+        <SidebarGroup>
+          <SidebarGroupLabel>Pinned Folders</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {PinnedFoldersItem.map((item) => (
+                <SidebarMenuItem key={item.title}>
+                  <SidebarMenuButton asChild>
+                    <div className="flex items-center gap-2">
+                      <div className={cn("p-1 rounded-full", item.color)}></div>
+                      <span>{item.title}</span>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

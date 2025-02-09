@@ -2,12 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-import Navbar from "./components/custom/navbar.tsx";
+import { SidebarProvider } from "./components/ui/sidebar.tsx";
+import { AppSidebar } from "./components/custom/app-sidebar.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Navbar />
-    <App />
+    <SidebarProvider className="h-full w-full flex">
+      <AppSidebar />
+      <App />
+    </SidebarProvider>
   </React.StrictMode>
 );
 

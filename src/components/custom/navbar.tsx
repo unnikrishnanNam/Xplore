@@ -1,10 +1,13 @@
 import { Minus, Square, X } from "lucide-react";
+import { SidebarTrigger } from "../ui/sidebar";
 
 const Navbar = () => {
   return (
-    <nav className="w-full px-4 py-2 bg-muted grid grid-cols-3 items-center justify-between drag">
+    <nav className="w-full h-12 px-4 bg-muted grid grid-cols-3 items-center justify-between drag">
       {/* //* Misc  */}
-      <div></div>
+      <div className="flex items-center justify-start">
+        <SidebarTrigger className="no-drag" />
+      </div>
       {/* //* Title  */}
       <p className="font-semibold text-center">Xplore</p>
       {/* //* Traffic Light  */}

@@ -1,12 +1,14 @@
 import { Minus, Square, X } from "lucide-react";
 import { SidebarTrigger } from "../ui/sidebar";
+import { ModeToggle } from "./mode-toggle";
 
 const Navbar = () => {
   return (
     <nav className="w-full h-14 px-4 gap-8 flex items-center justify-between drag">
       {/* //* Misc  */}
-      <div className="flex items-center justify-start">
-        <SidebarTrigger className="no-drag" />
+      <div className="flex gap-2 items-center justify-start">
+        <SidebarTrigger className="no-drag border p-4 cursor-pointer" />
+        <ModeToggle/>
       </div>
       {/* //* Title  */}
       <div className="bg-secondary w-full p-4 rounded-md"></div>

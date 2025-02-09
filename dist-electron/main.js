@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from "electron";
+import { app, BrowserWindow, ipcMain } from "electron";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -38,6 +38,19 @@ app.on("activate", () => {
   }
 });
 app.whenReady().then(createWindow);
+ipcMain.on("window:minimize", () => {
+  win == null ? void 0 : win.minimize();
+});
+ipcMain.on("window:maximize", () => {
+  if (win == null ? void 0 : win.isMaximized()) {
+    win == null ? void 0 : win.unmaximize();
+  } else {
+    win == null ? void 0 : win.maximize();
+  }
+});
+ipcMain.on("window:close", () => {
+  win == null ? void 0 : win.close();
+});
 export {
   MAIN_DIST,
   RENDERER_DIST,

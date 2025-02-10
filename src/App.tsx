@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="h-full w-full flex flex-col justify-between items-center gap-2">
       <Navbar />
-      <main className="h-full w-full flex flex-col justify-center items-center gap-4">
+      <main className="h-full w-full">
         <Viewport />
       </main>
     </div>

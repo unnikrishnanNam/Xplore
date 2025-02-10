@@ -15,6 +15,7 @@ export const usePath = () => {
 
   useEffect(() => {
     getFilesAndFolders(joinPath(path));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [path]);
 
   const moveIntoFolder = (folderName: string) => {

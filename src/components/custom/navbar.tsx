@@ -1,6 +1,7 @@
 import { Minus, Square, X } from "lucide-react";
 import { SidebarTrigger } from "../ui/sidebar";
 import { ModeToggle } from "./mode-toggle";
+import { ExploreBar } from "./explore-bar";
 
 const Navbar = () => {
   return (
@@ -11,7 +12,7 @@ const Navbar = () => {
         <ModeToggle />
       </div>
       {/* //* Title  */}
-      <div className="bg-secondary w-full p-4 rounded-md"></div>
+      <ExploreBar />
       {/* //* Traffic Light  */}
       <div className="w-fit no-drag h-full flex items-center justify-end gap-3">
         <button

@@ -7,7 +7,7 @@ const Viewport = () => {
   const { files, getFilesAndFolders, moveIntoFolder } = usePath();
   useEffect(() => {
     getFilesAndFolders("/");
-  });
+  }, []);
   return (
     <ScrollArea className="w-full h-full overflow-auto">
       {files.map((file) => (

@@ -11,4 +11,5 @@ contextBridge.exposeInMainWorld("xploreAPI", {
 
   getFilesAndFolders: (path: string): Promise<FileItemType> =>
     ipcRenderer.invoke("fs:getFilesAndFolders", path),
+  getUserInfo: () => ipcRenderer.invoke("fs:getSystemUser"),
 });

@@ -9,6 +9,7 @@ declare global {
 
       isWin: () => boolean;
 
+      getUserInfo: () => Promise<SystemUserType>;
       getFilesAndFolders: (path: string) => Promise<FileItemType[]>;
     };
   }

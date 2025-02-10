@@ -10,6 +10,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { usePath } from "@/hooks/use-path";
+import { useSystemUser } from "@/hooks/use-system-user";
 import { cn } from "@/lib/utils";
 import {
   Clapperboard,
@@ -24,6 +26,8 @@ import { ImOnedrive } from "react-icons/im";
 import { IoCloud } from "react-icons/io5";
 
 export function AppSidebar() {
+  const { systemUser } = useSystemUser();
+  const { setPath } = usePath();
   const QuickAccessItems = [
     {
       title: "All Files",
@@ -37,22 +41,22 @@ export function AppSidebar() {
     },
     {
       title: "Desktop",
-      url: "/desktop",
+      url: systemUser?.homedir + "/Desktop",
       icon: () => <Monitor size={16} />,
     },
     {
       title: "Downloads",
-      url: "/downloads",
+      url: systemUser?.homedir + "/Downloads",
       icon: () => <FolderDown size={16} />,
     },
     {
       title: "Pictures",
-      url: "/pictures",
+      url: systemUser?.homedir + "/Pictures",
       icon: () => <Image size={16} />,
     },
     {
       title: "Videos",
-      url: "/videos",
+      url: systemUser?.homedir + "/Videos",
       icon: () => <Clapperboard size={16} />,
     },
   ];
@@ -111,10 +115,13 @@ export function AppSidebar() {
               {QuickAccessItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   <SidebarMenuButton asChild>
-                    <a href={item.url}>
+                    <div
+                      onClick={() => setPath(item.url.split("/"))}
+                      className="cursor-pointer"
+                    >
                       <item.icon />
                       <span>{item.title}</span>
-                    </a>
+                    </div>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}

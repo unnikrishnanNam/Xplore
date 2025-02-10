@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from "electron";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
 import fs from "node:fs";
+import os from "node:os";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 process.env.APP_ROOT = path.join(__dirname, "..");
@@ -87,4 +88,9 @@ ipcMain.handle("fs:getFilesAndFolders", async (_, dirPath: string) => {
     console.error(error);
     return [];
   }
+});
+
+ipcMain.handle("fs:getSystemUser", () => {
+  const data = os.userInfo();
+  return data;
 });

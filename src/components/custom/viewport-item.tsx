@@ -9,10 +9,10 @@ const ViewportItem = ({ item }: { item: FileItemType }) => {
       style={{ cursor: "pointer" }}
       onDoubleClick={() => moveIntoFolder(item.name)}
     >
-      <p className="p-4 rounded-md text-6xl">
+      <p className="p-4 rounded-md text-5xl">
         {item.isDirectory ? "🗂️" : "📄"}
       </p>
-      <p className="text-center text-wrap">{item.name}</p>
+      <p className="text-center text-wrap px-2 truncate">{item.name}</p>
     </div>
   );
 };

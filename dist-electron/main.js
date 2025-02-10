@@ -1,6 +1,8 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import fs from "node:fs";
+import os from "node:os";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 process.env.APP_ROOT = path.join(__dirname, "..");
 const VITE_DEV_SERVER_URL = process.env["VITE_DEV_SERVER_URL"];
@@ -53,6 +55,24 @@ ipcMain.on("window:maximize", () => {
 });
 ipcMain.on("window:close", () => {
   win == null ? void 0 : win.close();
+});
+ipcMain.handle("fs:getFilesAndFolders", async (_, dirPath) => {
+  try {
+    const entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
+    return entries.map((entry) => ({
+      name: entry.name,
+      isDirectory: entry.isDirectory(),
+      size: entry.isDirectory() ? null : fs.statSync(path.join(dirPath, entry.name)).size,
+      lastModified: fs.statSync(path.join(dirPath, entry.name)).mtime
+    }));
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+});
+ipcMain.handle("fs:getSystemUser", () => {
+  const data = os.userInfo();
+  return data;
 });
 export {
   MAIN_DIST,

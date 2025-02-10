@@ -6,6 +6,10 @@ declare global {
       minimizeWindow: () => void;
       maximizeWindow: () => void;
       closeWindow: () => void;
+
+      isWin: () => boolean;
+
+      getFilesAndFolders: (path: string) => Promise<FileItemType[]>;
     };
   }
 }

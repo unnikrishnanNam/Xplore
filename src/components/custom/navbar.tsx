@@ -5,13 +5,13 @@ import { ExploreBar } from "./explore-bar";
 
 const Navbar = () => {
   return (
-    <nav className="w-full h-14 px-4 gap-8 flex items-center justify-between drag">
-      {/* //* Misc  */}
+    <nav className="w-full h-14 py-2 px-4 gap-8 flex items-center justify-between drag">
+      {/* //* Misc Options */}
       <div className="flex gap-2 items-center justify-start">
         <SidebarTrigger className="no-drag border p-4 cursor-pointer" />
         <ModeToggle />
       </div>
-      {/* //* Title  */}
+      {/* //* Explorebar  */}
       <ExploreBar />
       {/* //* Traffic Light  */}
       <div className="w-fit no-drag h-full flex items-center justify-end gap-3">

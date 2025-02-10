@@ -1,6 +1,7 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import { fileURLToPath } from "node:url";
 import path from "node:path";
+import fs from "node:fs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 process.env.APP_ROOT = path.join(__dirname, "..");
@@ -69,4 +70,21 @@ ipcMain.on("window:maximize", () => {
 
 ipcMain.on("window:close", () => {
   win?.close();
+});
+
+ipcMain.handle("fs:getFilesAndFolders", async (_, dirPath: string) => {
+  try {
+    const entries = await fs.promises.readdir(dirPath, { withFileTypes: true });
+    return entries.map((entry) => ({
+      name: entry.name,
+      isDirectory: entry.isDirectory(),
+      size: entry.isDirectory()
+        ? null
+        : fs.statSync(path.join(dirPath, entry.name)).size,
+      lastModified: fs.statSync(path.join(dirPath, entry.name)).mtime,
+    }));
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 });

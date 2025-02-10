@@ -5,15 +5,10 @@ const ViewportItem = ({ item }: { item: FileItemType }) => {
   const { moveIntoFolder } = usePath();
   return (
     <div
-      className="max-w-28"
+      className="select-none w-full max-w-28 flex flex-col items-center justify-start"
       style={{ cursor: "pointer" }}
       onDoubleClick={() => moveIntoFolder(item.name)}
     >
-      {/* <h2>{item.name}</h2>
-      <p>{item.isDirectory ? "Folder" : "File"}</p>
-      <p>{item.size}</p>
-      <p>{item.lastModified?.toDateString()}</p> */}
-      {/* {item.isDirectory ? <Folder size={32} /> : <File size={32} />} */}
       <p className="p-4 rounded-md text-6xl">
         {item.isDirectory ? "🗂️" : "📄"}
       </p>

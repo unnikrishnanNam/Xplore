@@ -10,7 +10,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { usePath } from "@/hooks/use-path";
+import { useFileManager } from "@/hooks/use-file-manager";
 import { useSystemUser } from "@/hooks/use-system-user";
 import { cn } from "@/lib/utils";
 import {
@@ -27,7 +27,7 @@ import { IoCloud } from "react-icons/io5";
 
 export function AppSidebar() {
   const { systemUser } = useSystemUser();
-  const { setPath } = usePath();
+  const { setPath } = useFileManager();
   const QuickAccessItems = [
     {
       title: "All Files",

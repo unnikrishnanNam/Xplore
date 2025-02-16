@@ -4,15 +4,19 @@ import { useAtom } from "jotai";
 import { useEffect } from "react";
 import { FileItemType } from "shared/types";
 
-export const usePath = () => {
+export const useFileManager = () => {
   const [path, setPath] = useAtom<string[]>(pathAtom);
   const [files, setFiles] = useAtom<FileItemType[]>(filesAtom);
+
+  const initializeApp = async () => {
+    getFilesAndFolders("/");
+  };
 
   const getFilesAndFolders = async (path: string) => {
     const files = await window.xploreAPI.getFilesAndFolders(path);
     files.sort((a: FileItemType) => (a.isDirectory ? -1 : 1));
-    files.filter((file) => !isHidden(file.name));
-    setFiles(files);
+    setFiles(files.filter((file) => !isHidden(file.name)));
+    // setFiles(files);
   };
 
   useEffect(() => {
@@ -33,7 +37,7 @@ export const usePath = () => {
     files,
     setFiles,
 
-    getFilesAndFolders,
     moveIntoFolder,
+    initializeApp,
   };
 };

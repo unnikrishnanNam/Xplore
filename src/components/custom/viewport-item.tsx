@@ -1,8 +1,8 @@
-import { usePath } from "@/hooks/use-path";
+import { useFileManager } from "@/hooks/use-file-manager";
 import { FileItemType } from "shared/types";
 
 const ViewportItem = ({ item }: { item: FileItemType }) => {
-  const { moveIntoFolder } = usePath();
+  const { moveIntoFolder } = useFileManager();
   return (
     <div
       className="select-none w-full max-w-28 flex flex-col items-center justify-start"

@@ -73,12 +73,12 @@
 
 import { ChevronRight, HardDrive } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { usePath } from "@/hooks/use-path";
+import { useFileManager } from "@/hooks/use-file-manager";
 import { initialPath } from "@/lib/utils";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 
 export function ExploreBar() {
-  const { path, setPath } = usePath();
+  const { path, setPath } = useFileManager();
   return (
     <ScrollArea className="flex w-full whitespace-nowrap bg-secondary rounded-md no-drag">
       <ol className="inline-flex items-center space-x-1 md:space-x-3 ">
